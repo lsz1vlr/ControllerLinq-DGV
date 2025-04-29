@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,12 +33,9 @@ namespace WindowsFormsApp1
         private void bt_Maiusculo_Click(object sender, EventArgs e)
 
         {
-            
-            var nomesMaiusculos = cl.clientes.Select(c => c.Nome.ToUpper()).ToList();
+            var dataSource = cl.clientes.Select(c => new { Id = c.Id, Nome = c.Nome.ToUpper(), Email = c.Email}).ToList();
 
             dgv_clientes.DataSource = null;
-
-            var dataSource = nomesMaiusculos.Select(nome => new { Nome = nome }).ToList();
             dgv_clientes.DataSource = dataSource;
 
         }
